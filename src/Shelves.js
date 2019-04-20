@@ -6,12 +6,16 @@ import SingleShelf from "./SingleShelf";
 class Shelves extends React.Component{
 
     componentDidMount() {
-        console.log(this.props.books)
+
     }
 
     render() {
 
-        return(
+
+        return (
+
+            <div>
+
             <div className="list-books">
                 <div className="list-books-title">
                     <h1>MyReads</h1>
@@ -19,11 +23,20 @@ class Shelves extends React.Component{
                 <div className="list-books-content">
                     <div>
 
-                        <SingleShelf/>
+                        <SingleShelf
+                            books={this.props.books.filter(book => book.shelf==='currentlyReading')}
+                            shelf={"Currently Reading"}
+                        />
 
-                        <SingleShelf/>
+                        <SingleShelf
+                            books={this.props.books.filter(book => book.shelf==='wantToRead')}
+                            shelf={"Want To Read"}
+                        />
 
-                        <SingleShelf/>
+                        <SingleShelf
+                            books={this.props.books.filter(book => book.shelf==='read')}
+                            shelf={"Read"}
+                        />
 
 
                     </div>
@@ -36,7 +49,9 @@ class Shelves extends React.Component{
 
                 </div>
             </div>
-        )
+
+            </div>
+    )
     }
 
 }

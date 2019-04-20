@@ -19,13 +19,12 @@ getBooksByShelf(shelf){
 }
 
   componentDidMount() {
-    if(this.state.books.length===0) {
       BooksAPI.getAll().then(result =>{
         this.setState({books: result});
         console.log(this.state.books)
       }).catch(err => console.log(err));
 
-    }
+
   }
 
   render() {
