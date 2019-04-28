@@ -29,14 +29,12 @@ class Shelves extends React.Component{
                             books={this.props.books.filter(book => book.shelf==='wantToRead')}
                             shelf={"Want To Read"}
                             onSelectionChange={this.props.onSelectionChange}
-
                         />
 
                         <SingleShelf
                             books={this.props.books.filter(book => book.shelf==='read')}
                             shelf={"Read"}
                             onSelectionChange={this.props.onSelectionChange}
-
                         />
 
 

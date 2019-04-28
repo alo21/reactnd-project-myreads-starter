@@ -17,7 +17,7 @@ class SingleShelf extends React.Component {
 
                             {this.props.books.map(((book) => (
 
-                                <li key={book.title}>
+                                <li key={book.id}>
 
                                     <div className="book">
 
@@ -37,8 +37,8 @@ class SingleShelf extends React.Component {
                                         </div>
                                         <div className="book-title">{book.title}</div>
 
-                                        {book.authors.map((auth) => (
-                                            <div className="book-authors">{auth}</div>
+                                        {book.authors.map((auth, index) => (
+                                            <div className="book-authors" key={book.id + ':auth:' + index}>{auth}</div>
                                         ))}
 
                                     </div>

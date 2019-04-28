@@ -15,7 +15,7 @@ class BooksApp extends React.Component {
         this.onSelectionChange = this.onSelectionChange.bind(this);
 
         this.state = {
-            books: []
+            books: [],
         };
     }
 
@@ -38,10 +38,24 @@ class BooksApp extends React.Component {
         });
 
 
+        let filteredBook = tempBooks.filter(el => el.id===book.id);
+
+        console.log(filteredBook);
+
+        if(filteredBook.length===0){
+            book.shelf = newValue;
+            tempBooks.push(book);
+            console.log(book);
+            console.log("added book to the state")
+        }
+
+
         this.setState(() => ({
             books: tempBooks
 
         }));
+
+        console.log("After updating the state", this.state.books)
 
     };
 
@@ -55,7 +69,7 @@ class BooksApp extends React.Component {
   render() {
     return (
       <div className="app">
-          
+
         <Route exact path={"/"} render={()=>(
 
             <Shelves
@@ -66,7 +80,9 @@ class BooksApp extends React.Component {
         )} />
 
         <Route path={"/search"} render={()=>(
-            <Search/>
+            <Search
+                onSelectionChange={this.onSelectionChange}
+            />
         )}/>
 
       </div>

@@ -21,8 +21,11 @@ class Search extends React.Component{
 
         BooksAPI.search(query)
             .then(res => {
-                this.setState({result: res});
-                console.log(res)
+
+                this.setState(() => ({
+                    result: res
+
+                }));
             }).catch(err => {
             console.log(err)
         });
@@ -59,8 +62,11 @@ class Search extends React.Component{
 
                     <ol className="books-grid">
 
+                        {console.log("Before passing to SingleShelf", this.state.result)}
+
                             <SingleShelf
                                 books={this.state.result}
+                                onSelectionChange={this.props.onSelectionChange}
                             />
 
 
