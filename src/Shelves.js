@@ -5,10 +5,6 @@ import SingleShelf from "./SingleShelf";
 
 class Shelves extends React.Component{
 
-    componentDidMount() {
-
-    }
-
     render() {
 
 
@@ -26,16 +22,21 @@ class Shelves extends React.Component{
                         <SingleShelf
                             books={this.props.books.filter(book => book.shelf==='currentlyReading')}
                             shelf={"Currently Reading"}
+                            onSelectionChange={this.props.onSelectionChange}
                         />
 
                         <SingleShelf
                             books={this.props.books.filter(book => book.shelf==='wantToRead')}
                             shelf={"Want To Read"}
+                            onSelectionChange={this.props.onSelectionChange}
+
                         />
 
                         <SingleShelf
                             books={this.props.books.filter(book => book.shelf==='read')}
                             shelf={"Read"}
+                            onSelectionChange={this.props.onSelectionChange}
+
                         />
 
 

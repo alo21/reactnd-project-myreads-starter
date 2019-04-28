@@ -17,7 +17,7 @@ class SingleShelf extends React.Component {
 
                             {this.props.books.map(((book) => (
 
-                                <li>
+                                <li key={book.title}>
 
                                     <div className="book">
 
@@ -28,14 +28,18 @@ class SingleShelf extends React.Component {
                                                 height: 193,
                                                 backgroundImage: 'url(' + book.imageLinks.smallThumbnail + ')'
                                             }}></div>
-                                            <Select/>
+                                            <Select
+                                                defaultSelection={book.shelf}
+                                                book={book}
+                                                onSelectionChange={this.props.onSelectionChange}
+
+                                            />
                                         </div>
                                         <div className="book-title">{book.title}</div>
 
                                         {book.authors.map((auth) => (
                                             <div className="book-authors">{auth}</div>
                                         ))}
-
 
                                     </div>
 
