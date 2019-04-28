@@ -10,7 +10,7 @@ class Shelves extends React.Component{
         const shelves =
             [['Currently Reading', 'currentlyReading'],
             ['Want to Read', 'wantToRead'],
-            ['Read', 'read']]
+            ['Read', 'read']];
 
         this.state = {
             shelves: shelves
