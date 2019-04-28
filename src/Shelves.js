@@ -5,8 +5,21 @@ import SingleShelf from "./SingleShelf";
 
 class Shelves extends React.Component{
 
-    render() {
+    constructor(props){
+        super(props);
+        const shelves =
+            [['Currently Reading', 'currentlyReading'],
+            ['Want to Read', 'wantToRead'],
+            ['Read', 'read']]
 
+        this.state = {
+            shelves: shelves
+
+        }
+
+    }
+
+    render() {
 
         return (
 
@@ -16,29 +29,24 @@ class Shelves extends React.Component{
                 <div className="list-books-title">
                     <h1>MyReads</h1>
                 </div>
+
                 <div className="list-books-content">
-                    <div>
 
-                        <SingleShelf
-                            books={this.props.books.filter(book => book.shelf==='currentlyReading')}
-                            shelf={"Currently Reading"}
-                            onSelectionChange={this.props.onSelectionChange}
-                        />
-
-                        <SingleShelf
-                            books={this.props.books.filter(book => book.shelf==='wantToRead')}
-                            shelf={"Want To Read"}
-                            onSelectionChange={this.props.onSelectionChange}
-                        />
-
-                        <SingleShelf
-                            books={this.props.books.filter(book => book.shelf==='read')}
-                            shelf={"Read"}
-                            onSelectionChange={this.props.onSelectionChange}
-                        />
+                        {this.state.shelves.map((shelf) => (
 
 
-                    </div>
+                            <SingleShelf
+                                books={this.props.books.filter(book => book.shelf===shelf[1])}
+                                shelf={shelf[0]}
+                                onSelectionChange={this.props.onSelectionChange}
+                                key={shelf[1]}
+                            />
+
+
+                        ) )}
+
+
+
                 </div>
                 <div className="open-search">
                     <Link to={"/search"}>

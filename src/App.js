@@ -23,40 +23,31 @@ class BooksApp extends React.Component {
     onSelectionChange(book, newValue) {
 
         update(book, newValue).then(()=>{
-            console.log("Shelf updated correctly")
-        }).catch(e => {
-            console.log("Something went wrong", e)
-        });
+            let tempBooks = this.state.books;
 
-        let tempBooks = this.state.books;
+            tempBooks.forEach((el)=>{
 
-        tempBooks.forEach((el)=>{
+                if(el.id === book.id){
+                    el.shelf = newValue
+                }
+            });
 
-            if(el.id === book.id){
-                el.shelf = newValue
+            let filteredBook = tempBooks.filter(el => el.id===book.id);
+
+            if(filteredBook.length===0){
+                book.shelf = newValue;
+                tempBooks.push(book);
             }
+
+
+            this.setState(() => ({
+                books: tempBooks
+
+            }));
+
+        }).catch(e => {
+            console.error(e)
         });
-
-
-        let filteredBook = tempBooks.filter(el => el.id===book.id);
-
-        console.log(filteredBook);
-
-        if(filteredBook.length===0){
-            book.shelf = newValue;
-            tempBooks.push(book);
-            console.log(book);
-            console.log("added book to the state")
-        }
-
-
-        this.setState(() => ({
-            books: tempBooks
-
-        }));
-
-        console.log("After updating the state", this.state.books)
-
     };
 
 
