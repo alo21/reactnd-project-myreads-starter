@@ -22,20 +22,26 @@ class BooksApp extends React.Component {
 
     onSelectionChange(book, newValue) {
 
-        update(book, newValue);
+        update(book, newValue).then(()=>{
+            console.log("Shelf updated correctly")
+        }).catch(e => {
+            console.log("Something went wrong", e)
+        });
 
-        this.setState((currentState) => ({
-            books: this.state.books
+        let tempBooks = this.state.books;
 
-            // books: currentState.books.forEach((el) => {
-            //     if(el.id === book.id){
-            //         el.shelf = newValue
-            //     }
-            // })
+        tempBooks.forEach((el)=>{
+
+            if(el.id === book.id){
+                el.shelf = newValue
+            }
+        });
+
+
+        this.setState(() => ({
+            books: tempBooks
 
         }));
-
-        console.log("Updated", this.state.books)
 
     };
 
@@ -49,9 +55,7 @@ class BooksApp extends React.Component {
   render() {
     return (
       <div className="app">
-
-          {console.log("lo Stampo", this.state.books)}
-
+          
         <Route exact path={"/"} render={()=>(
 
             <Shelves
