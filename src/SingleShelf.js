@@ -4,12 +4,10 @@ import Select from "./Select";
 
 class SingleShelf extends React.Component {
 
-
     render() {
         return (
 
             <div>
-
 
                 <div className="bookshelf">
                     <h2 className="bookshelf-title">{this.props.shelf}</h2>
@@ -27,7 +25,7 @@ class SingleShelf extends React.Component {
                                             <div className="book-cover" style={{
                                                 width: 128,
                                                 height: 193,
-                                                backgroundImage: 'url(' + book.imageLinks.smallThumbnail + ')'
+                                                backgroundImage: 'url(' + book.imageLinks.smallThumbnail  + ')'
                                             }}></div>
                                             <Select
                                                 defaultSelection={book.shelf}

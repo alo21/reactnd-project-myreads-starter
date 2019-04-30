@@ -16,8 +16,8 @@ class Search extends React.Component{
 
     state = {
         result: [],
-        query: ''
-
+        query: '',
+        noResults: false
     };
 
     updateQuery(query){
@@ -54,13 +54,25 @@ class Search extends React.Component{
         BooksAPI.search(query)
             .then(res => {
 
+                if(res.items!==undefined && res.items.length===0){
+                    this.setState(() => ({
+                        noResults: true
+                    }))
+                }
+
                 res.forEach((el) => {
 
                     el.shelf = this.isInMyShelf(el);
+
+                    if(el.imageLinks===undefined || (el.imageLinks.length > 0 &&  el.imageLinks.smallThumbnail===undefined)){
+                        el.imageLinks = [];
+                        el.imageLinks.smallThumbnail = ''
+                    }
                 });
 
                 this.setState(() => ({
-                    result: res
+                    result: res,
+                    noResults: false
 
                 }));
             })
@@ -72,6 +84,7 @@ class Search extends React.Component{
 
 
     render() {
+
         return(
 
         <div className="search-books">
@@ -93,12 +106,20 @@ class Search extends React.Component{
 
                     <ol className="books-grid">
 
-                        {console.log("Before passing to SingleShelf", this.state.result)}
+                        {/*{console.log("Before passing to SingleShelf", this.state.result)}*/}
 
+                        {!this.state.noResults &&
                             <SingleShelf
                                 books={this.state.result}
                                 onSelectionChange={this.props.onSelectionChange}
                             />
+                        }
+
+                        {this.state.noResults &&
+                            <h1>Books not found</h1>
+
+                        }
+
 
 
 

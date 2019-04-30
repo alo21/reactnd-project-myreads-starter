@@ -34,7 +34,6 @@ class Shelves extends React.Component{
 
                         {this.state.shelves.map((shelf) => (
 
-
                             <SingleShelf
                                 books={this.props.books.filter(book => book.shelf===shelf[1])}
                                 shelf={shelf[0]}
