@@ -1,22 +1,24 @@
 # MyReads Project
 
-This is the starter template for the final assessment project for Udacity's React Fundamentals course. The goal of this template is to save you time by providing a static example of the CSS and HTML markup that may be used, but without any of the React code that is needed to complete the project. If you choose to start with this template, your job will be to add interactivity to the app by refactoring the static code in this template.
+This project is a React based software, which helps you manage a virtual private bookshelf. You can divide books into three separate sections:
++ Currently reading
++ Want to read
++ Read
 
-Of course, you are free to start this project from scratch if you wish! Just be sure to use [Create React App](https://github.com/facebookincubator/create-react-app) to bootstrap the project.
-
+You can also pick a new book from a virtual bookstore and bring into your bookshelf. You can accomplish it by doing research.
 
 ## How to start the project
 
-1. Open your terminal and go to the project directory
-2. Install all dependencies, using npm install
-3. Run the project, typing npm start
++ Open your terminal and go to the project directory
++ Install all dependencies:
+```
+npm install
+```
 
-## TL;DR
-
-To get started developing right away:
-
-* install all project dependencies with `npm install`
-* start the development server with `npm start`
++ Run the project:
+```
+npm start
+```
 
 ## What You're Getting
 ```bash
